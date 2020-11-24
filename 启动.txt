@@ -1,0 +1,49 @@
+﻿开启自启
+C:\Users\Administrator\AppData\Roaming\Microsoft\Windows\Start Menu\Programs\Startup
+
+获取项目依赖，在下面主目录下
+PS E:\zentao\zentao> pipreqs ./  --encoding=utf8  --force
+
+安装依赖
+pip install -r requirements.txt
+
+
+liuxn
+
+ rm -rf *.log
+
+启动
+nohup python manage.py runserver 162.168.1.53:9002 &
+1
+杀进程
+sudo netstat -tulpn | grep :9001
+
+kill -9 11666
+
+
+
+cd /var/www/zentao_pro_report/zentao_report/zentao/
+./zentao_start_1.sh
+exit 0
+
+python3 /var/www/zentao_pro_report/zentao_report/Project_test_report/manage.py runserver 192.168.1.53:9002
+exit 0
+cd /var/www/zentao_pro_report/zentao_report/Project_test_report/
+python3 manage.py runserver 192.168.1.53:9002
+exit 0
+
+
+
+
+SQLite 3.8.3 or later is required (found 3.7.17).解决方法
+
+https://blog.csdn.net/qq_39969226/article/details/92218635
+＃将路径传递给共享库
+# 设置开机自启动执行，可以将下面的export语句写入 ~/.bashrc 文件中，如果如果你想立即生效，可以执行source 〜/.bashrc 将在每次启动终端时执行
+[root@djangoServer ~]# export LD_LIBRARY_PATH="/usr/local/lib"
+
+配置新安装版本的环境变量
+1.cd ~ 回去登录用户目录
+2.s -a 或 ll -a（-a是显示隐藏文件）  找到.bashrc
+3.vim 编辑进入编辑，配置export LD_LIBRARY_PATH="/usr/local/lib:$PATH"
+

@@ -1,0 +1,1 @@
+2020-11-17 11:15:57,570 - API - INFO - '/get_product_sum',methods=['post']{"message": "\u64cd\u4f5c\u6210\u529f", "result_code": "0000", "data": {"name": "\u5357\u6c34\u5317\u8c03\u96a7\u9053\u68c0\u6d4b\u673a\u5668\u4eba", "sum_all": 11, "data": {"closed": 0, "active": 11, "resolved": 0}}}
