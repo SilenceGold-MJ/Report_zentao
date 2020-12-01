@@ -141,9 +141,10 @@ class ServiceAPI():
                 data = Query_DB().getnum(sql)
 
                 dic.update({"severity_%s"%i: data})
-            dic.update(status_Rele(dic))
+
             dic.update({'Repair_rate': round(dic['closed'] / dic['sums'], 4) if dic['sums']!=0 else 0.0})
             dic.update({"owner":get_module_info(n)["owner"]})#责任人
+            dic.update(status_Rele(dic))
 
             Modulename_list.append(dic['Modulename'])
             msdule_num.append(dic['sums'])
@@ -191,7 +192,7 @@ class ServiceAPI():
             status_list = ['closed', 'active', 'resolved']
 
             data_dic={
-                "ID":n,
+                #"ID":n,
                 'product':i["id"],
                 'name':i["name"],
                 'sum_all': Query_DB().getnum(sql_sum_all),
@@ -208,12 +209,13 @@ class ServiceAPI():
 
                 data_dic.update({"severity_%s"%s:Query_DB().getnum(sql_sum)})
 
-            data_dic.update(status_Rele(data_dic))
+
             data_dic.update({'Repair_rate': round(data_dic['closed'] / data_dic['sum_all']  if data_dic['sum_all']!=0 else 0.0,4),"PO":get_product_info_(i["id"])["PO"]})
 
 
             n+=1
             data.append(data_dic)
+            data_dic.update(status_Rele(data_dic))
 
             product_name.append(data_dic['name'])
             product_sum.append(data_dic['sum_all'])
@@ -238,7 +240,9 @@ class ServiceAPI():
         zentao_host =zentao_Addr()['host']
         zentao_port =zentao_Addr()['port']
 
-        sql='select * from  zt_bug WHERE module=%s AND deleted="0" AND status!="closed" ORDER BY severity ASC;'%(module)
+        #sql='select * from  zt_bug WHERE module=%s AND deleted="0" AND status!="closed" ORDER BY severity ASC;'%(module)
+        sql='select * from  zt_bug WHERE module=%s and deleted="0" and status!="closed" order  by severity asc,pri asc;'%(module)
+
         data_list=Query_DB().query_db_all(sql)
         datas=[]
         config=configs()

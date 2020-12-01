@@ -1,5 +1,5 @@
 
-def database():
+def database():#数据库地址
 	dic={
 		"host":"192.168.1.55",#127.0.0.1"
 		'user':'root',
@@ -9,7 +9,7 @@ def database():
 	}
 	return dic
 
-def zentao_Addr():
+def zentao_Addr():#禅道地址
 	dic={
 		"host":"192.168.1.55",
 		'port':81
@@ -49,3 +49,8 @@ def status():
 
 def severity():
 	return ["1","2","3","4"]
+
+
+def Repair_threshold():#修复率阀值
+	repair_threshold=0.8  #修复率阀值
+	return repair_threshold
