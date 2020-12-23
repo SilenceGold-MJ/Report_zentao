@@ -81,11 +81,11 @@ def module_info():#获模块信息
         product=params.get('product')
 
         data = (ServiceAPI().module_info(product))
-        logger.info("'/get_All_projects',methods=['post']" + str(data))
+        logger.info("'/module_info',methods=['post']" + str(data))
         return data
     else:
         data = json.dumps({"result_code": 3002, "msg": "入参必须为json类型。"})
-        logger.info("'/get_All_projects',methods=['post']："+str(data))
+        logger.info("'/module_info',methods=['post']："+str(data))
         return data
 @server.route('/get_module_bug', methods=['post'])#'get',
 def get_module_bug():#获取模块未关闭的BUG
@@ -95,11 +95,11 @@ def get_module_bug():#获取模块未关闭的BUG
         module = params.get('module')
 
         data = (ServiceAPI().get_module_bug(module))
-        logger.info("'/get_All_projects',methods=['post']" + str(data))
+        logger.info("'/get_module_bug',methods=['post']" + str(data))
         return data
     else:
         data = json.dumps({"result_code": 3002, "msg": "入参必须为json类型。"})
-        logger.info("'/get_All_projects',methods=['post']：" + str(data))
+        logger.info("'/get_module_bug',methods=['post']：" + str(data))
         return data
 
 @server.route('/get_product_sum', methods=['post'])#'get',

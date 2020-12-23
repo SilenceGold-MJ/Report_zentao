@@ -38,14 +38,14 @@ def status_Rele(dci):
     if 'sum_all' in dci:
         if dci['sum_all']!=0:
             if dci['Repair_rate']>repair_threshold:
-                if dci['severity_1'] + dci['severity_2'] > 0:
-                    return {'status_Rele': '不可发布'}
-                elif dci['severity_1'] + dci['severity_2'] == 0:
-                    return {'status_Rele': '发布试用'}
+                if dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0 and dci['severity_4'] == 0:
+                    return {'status_Rele': '发布正式'}
                 elif dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0:
                     return {'status_Rele': '发布正式'}
-                elif dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0 and dci['severity_4'] == 0:
-                    return {'status_Rele': '发布正式'}
+                elif dci['severity_1'] + dci['severity_2'] == 0:
+                    return {'status_Rele': '发布试用'}
+                elif dci['severity_1'] + dci['severity_2'] > 0:
+                    return {'status_Rele': '不可发布'}
             else:
                 return {'status_Rele': '不可发布'}
         else:
@@ -54,15 +54,15 @@ def status_Rele(dci):
 
     elif 'sums' in dci:
         if dci['sums']!=0:
-            if dci['Repair_rate']>repair_threshold:
-                if dci['severity_1'] + dci['severity_2'] > 0:
-                    return {'status_Rele': '不可发布'}
-                elif dci['severity_1'] + dci['severity_2'] == 0:
-                    return {'status_Rele': '发布试用'}
+            if dci['Repair_rate'] > repair_threshold:
+                if dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0 and dci['severity_4'] == 0:
+                    return {'status_Rele': '发布正式'}
                 elif dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0:
                     return {'status_Rele': '发布正式'}
-                elif dci['severity_1'] + dci['severity_2'] == 0 and dci['severity_3'] == 0 and dci['severity_4'] == 0:
-                    return {'status_Rele': '发布正式'}
+                elif dci['severity_1'] + dci['severity_2'] == 0:
+                    return {'status_Rele': '发布试用'}
+                elif dci['severity_1'] + dci['severity_2'] > 0:
+                    return {'status_Rele': '不可发布'}
             else:
                 return {'status_Rele': '不可发布'}
         else:
